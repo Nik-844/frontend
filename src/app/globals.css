@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #f8fafc; /* slate-50 */
+  --color-foreground: #0f172a; /* slate-900 */
+  --color-card: #ffffff;
+  --color-card-border: #e2e8f0; /* slate-200 */
+  --color-accent: #86efac; /* pastel green */
+  --color-accent-dim: #bbf7d0; /* softer green */
+  --color-accent-glow: rgba(134, 239, 172, 0.3);
+  --color-success: #059669; /* emerald-600 */
+  --color-error: #dc2626; /* red-600 */
+  --color-input-bg: #ffffff;
+  --color-input-border: #cbd5e1; /* slate-300 */
+  --color-input-focus: #86efac;
+  --color-label: #475569; /* slate-600 */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* ── Pitch Pattern Background ─────────────────────────────── */
+.bg-pitch-pattern {
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: center center;
+}
+
+/* ── Corporate Card ───────────────────────────────────────── */
+.glass-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.025);
+}
+
+/* ── Input glow on focus ──────────────────────────────────── */
+.input-glow:focus {
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+  border-color: #86efac;
+}
+
+/* ── Spinner ──────────────────────────────────────────────── */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  border: 3px solid rgba(134, 239, 172, 0.3);
+  border-top-color: var(--color-success);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  animation: spin-slow 0.8s linear infinite;
+}
+
+/* ── Fade-in-up ───────────────────────────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Scale-in ─────────────────────────────────────────────── */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Number input – hide arrows ───────────────────────────── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
